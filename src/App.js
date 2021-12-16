@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch } from "antd";
+import { Switch, Button } from "antd";
 
 class App extends React.Component {
   state = {
@@ -25,6 +25,17 @@ class App extends React.Component {
           checked={this.state.scv}
           onChange={this._checkHandler}
         />
+        <h3>Button</h3>
+        <Button type="primary" size="small">
+          확인
+        </Button>
+        <Button type="danger" size="large">
+          취소
+        </Button>
+        <Button type="link">링크</Button>
+        <Button type="primary" loading={true}>
+          로딩
+        </Button>
       </section>
     );
   }
