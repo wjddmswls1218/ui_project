@@ -1,9 +1,10 @@
 import React from "react";
-import { Switch, Button } from "antd";
+import { Switch, Button, Modal } from "antd";
 
 class App extends React.Component {
   state = {
     scv: false,
+    modalOpen: false,
   };
 
   _checkHandler = (checked) => {
@@ -12,6 +13,14 @@ class App extends React.Component {
     this.setState((prev) => {
       return {
         scv: checked,
+      };
+    });
+  };
+
+  _modalToggle = () => {
+    this.setState((prev) => {
+      return {
+        modalOpen: !prev.modalOpen,
       };
     });
   };
@@ -36,6 +45,22 @@ class App extends React.Component {
         <Button type="primary" loading={true}>
           로딩
         </Button>
+
+        <h3>Modal</h3>
+        <Button type="primary" onClick={() => this._modalToggle()}>
+          Modal Open
+        </Button>
+
+        <Modal
+          title="My frist Modal"
+          width="600px"
+          visible={this.state.modalOpen}
+          onCancel={() => this._modalToggle()}
+          onOk={() => alert("Ok Click")}
+        >
+          <h1>hello My First Modal </h1>
+          <h2>welcome TO The My Application!</h2>
+        </Modal>
       </section>
     );
   }
