@@ -1,5 +1,13 @@
 import React from "react";
-import { Switch, Button, Modal } from "antd";
+import { Switch, Button, Modal, Carousel } from "antd";
+
+const contentStyle = {
+  height: "300px",
+  color: "#fff",
+  lineHeight: "300px",
+  textAlign: "center",
+  background: "#364d79",
+};
 
 class App extends React.Component {
   state = {
@@ -25,6 +33,10 @@ class App extends React.Component {
     });
   };
 
+  _imageChangeHandler = (idx) => {
+    console.log(idx);
+  };
+
   render() {
     return (
       <section>
@@ -45,12 +57,10 @@ class App extends React.Component {
         <Button type="primary" loading={true}>
           로딩
         </Button>
-
         <h3>Modal</h3>
         <Button type="primary" onClick={() => this._modalToggle()}>
           Modal Open
         </Button>
-
         <Modal
           title="My frist Modal"
           width="600px"
@@ -61,6 +71,22 @@ class App extends React.Component {
           <h1>hello My First Modal </h1>
           <h2>welcome TO The My Application!</h2>
         </Modal>
+        <h3>Image Slider</h3>
+        <Carousel afterChange={this._imageChangeHandler} autoplay={true}>
+          <div>
+            <h3 style={contentStyle}>1</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>2</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>3</h3>
+          </div>
+          <div>
+            <h3 style={contentStyle}>4</h3>
+          </div>
+        </Carousel>
+        , mountNode,
       </section>
     );
   }
